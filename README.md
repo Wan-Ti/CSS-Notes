@@ -83,10 +83,11 @@ table {
 ## table标签常用属性
 
 ### table关联标签
-
+```
 <table>
   <thead>
     <tr>
+      <th></th>
        <th>A</th>
        <th>B</th>
     </tr>
@@ -105,8 +106,38 @@ table {
   </tbody>
   <tfoot>
     <tr>
-       <th></th>
-       <td></td>
+       <th>总分</th>
+       <td>3</td>
+       <td>3</td>
+    </tr>
+  </tfoot>
+</table>
+```
+<table>
+  <thead>
+    <tr>
+      <th></th>
+       <th>A</th>
+       <th>B</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+       <th>数学</th>
+       <td>1</td>
+       <td>2</td>
+    </tr>
+    <tr>
+       <th>语文</th>
+       <td>1</td>
+       <td>2</td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr>
+       <th>总分</th>
+       <td>3</td>
+       <td>3</td>
     </tr>
   </tfoot>
 </table>
