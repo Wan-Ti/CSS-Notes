@@ -188,6 +188,27 @@ table{
 时间：onsubmit;//input与button的submit的区别：input中间不能再有其他内容，但是button可以，可以添加其他标签
 ```
 
+## input标签常用属性
+
+```
+作用：让用户输入内容
+属性：
+    类型type:button/checkbox/email/file/hidden/number/password/radio/search/submit/tel/text;
+    其他：name/autofocus/checked/disabled/maxlength/pattern/value/placeholder;
+事件：onchange/onfocus/onblur;
+验证器：HTML5新增功能；
+```
+
+## 其他输入标签
+```
+标签：
+   select+option；textarea;label
+注意事项：
+   一般不监听input的click时间；
+   form里面的input要有name；
+   form里面放一个type=submit才能出发submit事件
+```
+
 
 
  
