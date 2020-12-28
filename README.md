@@ -141,13 +141,16 @@ table {
     </tr>
   </tfoot>
 </table>
+
 ### table相关的样式属性
+
 ```
 table{
     table-layout:auto/fixed;
     border-collapse:collapse(相邻单元格具有共享边框，常用)/parate(相邻单元格具有不同的边界)
     border-spacing:控制border和border之间的距离
 }
+
 ```
 
 ## img标签常用属性
