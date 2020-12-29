@@ -1,214 +1,110 @@
 # CSS-Notes
 
-1. 控制文本自动换行，超出内容省略
-```
-white-space:nowrap;
-text-overflow:ellipsis;
-overflow:hidden;
-```
+1.语法
 
-2.如何查看或取消默认样式</br>
-  查看：Chrome开发工具-Elements-Styles-user agent stylesheet</br>
-  取消：进入大厂首页->Chrome开发者工具，找到类似代码->复制到自己项目中->命名为reset.css
-  ```
- * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-a {
-  color: inherit;
-  text-decoration: none;
-}
-input,
-button {
-  font-family: inherit;
-}
-ol,
-ul {
-  list-style: none;
-}
-table {
-  border-collapse: collapse;
-  border-spacing: 0;
-}
-  ```
-  
-# 部分标签常用属性
-
-## a标签的属性取值
-   作用：{
-       跳转外部页面；
-       跳转内部锚点；
-       跳转到邮箱或电话等；
-        }
-
-### href取值
-
-```
-· 网址：
-  <a href="https://google.com">谷歌</a>
-  <a href="http://google.com">谷歌</a>
-  <a href="//google.com">谷歌</a>
- 
- · 路径：
-   <a href="/a/b/c"></a>
-   <a href="a/b/c"></a>
-   <a href="index.html"></a>
+ ```
+ 语法一：样式语法
+  选择器 {
+      属性名：属性值；
+      /*注释*/
+      }
+      
+  语法二：@语法
+  @charset "UTF-8";
+  @import url(2.css);
+  @media (min-width: 100px) and (max-width: 200px){语法一;}
    
-  . 伪协议
-     <a href="javacrtipt:alert(a)">执行JavaScript</a>
-     <a href="mailto:邮箱">点击发送邮件</a>
-     <a href="tel:123456">点击拨打电话</a>
-     
-   · id
-     <a href="#xxx">跳转ID为XXX的部分</a>
-  
-```
+  注意：@charset必须放在第一行；
+        前两个@语法必须以分号;结尾；
+ ```
+ 
+ 2. 查资料
+ 
+ Google搜索关键词加MDN；</br>
+ CSS tricks;</br>
+ 张鑫旭的博客；</br>
+ 
+ 联系素材：dribbble.com顶级设计师社区(不提供下载)
+ 
+ ## 基本概念
+ 
+ ### 文档流Normal Flow
 
-### target取值
+ ```
+ 1. 流动方向
+ inline元素从左到右到达最右边后换行；
+ block元素从上到下，每一个都另起一行；
+ inline-block也是从左到右;
+ 
+ 2. 宽度
+ inline宽度为内部inline元素的和，不能用width指定；
+ block默认自动计算宽度，可用width指定；
+ inline-block结合前两者特点，可用width指定；
+ 
+ 3. 高度
+ inline高度由line-height间接确定，与height无关；
+ block高度由内部文档流元素决定，可以设height;
+ inline-block与block类似，可以设置height;
+ 
+ 需要注意的是在HTML5中所有元素不再区分内联元素与块级元素。进行区分的办法是看该元素的属性。即display的属性值为inline还是block;
+ 
+ 4. Overflow溢出情况
+    · 当内容大于容器
+      等内容的宽度或高度大于容器的，会溢出
+      可用overflow来设置是否显示滚动条；
+      auto是灵活设置，scroll是永远显示，hidden是直接隐藏溢出部分，visible是直       接显示溢出部分
+      overflow可以分为overflow-x和overflow-y
+      
+ 5. 脱离文档流
+   具有 float以及position:absolute/fixed属性的元素会脱离文档流；
+ ```
+ ### 块、内联、内联块
 
-```
-内置名字：
-<a target="_blank">在一个新的页面打开链接</a>；
-<a target="_top">在最顶层页面打开链接</a>；
-<a target="_parent">在父页面打开链接</a>；
-<a target="_self">在当前页面打开</a>；
-```
-
-## table标签常用属性
-
-### table关联标签
-```
-<table>
-  <thead>
-    <tr>
-      <th></th>
-       <th>A</th>
-       <th>B</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-       <th>数学</th>
-       <td>1</td>
-       <td>2</td>
-    </tr>
-    <tr>
-       <th>语文</th>
-       <td>1</td>
-       <td>2</td>
-    </tr>
-  </tbody>
-  <tfoot>
-    <tr>
-       <th>总分</th>
-       <td>3</td>
-       <td>3</td>
-    </tr>
-  </tfoot>
-</table>
-```
-<table>
-  <thead>
-    <tr>
-      <th></th>
-       <th>A</th>
-       <th>B</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-       <th>数学</th>
-       <td>1</td>
-       <td>2</td>
-    </tr>
-    <tr>
-       <th>语文</th>
-       <td>1</td>
-       <td>2</td>
-    </tr>
-  </tbody>
-  <tfoot>
-    <tr>
-       <th>总分</th>
-       <td>2</td>
-       <td>4</td>
-    </tr>
-  </tfoot>
-</table>
-
-### table相关的样式属性
-
-```
-table{
-    table-layout:auto/fixed;
-    border-collapse:collapse(相邻单元格具有共享边框，常用)/parate(相邻单元格具有不同的边界)
-    border-spacing:控制border和border之间的距离
-}
-
-```
-
-## img标签常用属性
-
-```
-作用：发出get请求，展示图片；
-属性：alt/height/width/src;(为了防止图片变形，一般只设置宽度或者只设置高度)
-时间：onload(图片加载成功)/onerror(图片加载失败);
-响应式：max-width:100%;
-```
-
-## 可替换元素
-```
-可替换元素的外观渲染是独立于CSS的。CSS 可以影响可替换元素的位置，但不会影响到可替换元素自身的内容。
-典型的可替换元素有：
-<iframe>
-<video>
-<embed>
-<img>
-
-有些元素仅在特定情况下被作为可替换元素处理，例如：
-
-<option>
-<audio>
-<canvas>
-<object>
-<applet>
-
-```
-
-## from标签常用属性
-```
-作用：发送get或post请求，然后刷新页面；//涉及到的知识点：get和post的区别
-属性：action/autocomplete(是否自动填充)/method/target(类似于a标签的target属性，在哪个页面刷新);
-时间：onsubmit;//input与button的submit的区别：input中间不能再有其他内容，但是button可以，可以添加其他标签
-```
-
-## input标签常用属性
-
-```
-作用：让用户输入内容
-属性：
-    类型type:button/checkbox/email/file/hidden/number/password/radio/search/submit/tel/text;
-    其他：name/autofocus/checked/disabled/maxlength/pattern/value/placeholder;
-事件：onchange/onfocus/onblur;
-验证器：HTML5新增功能；
-```
-
-## 其他输入标签
-```
-标签：
-   select+option；textarea;label
-注意事项：
-   一般不监听input的click时间；
-   form里面的input要有name；
-   form里面放一个type=submit才能出发submit事件
-```
-
+ ### 两种盒模型
+ 两种盒模型分别为border-box和content-box；
+ ```
+ border-box:
+ width:border+padding(内边距)ontent
+ 
+ content-box：
+ width:content
+ 
+ ```
+ 
+ ### margin合并(内边距塌陷)
+ ```
+ 合并的情形：
+ 父子margin合并；
+ 兄弟margin合并；
+ 
+ 组织合并：
+  · 父子合并
+    用padding/border挡住；
+    用overflo:hidden挡住
+    用display：flex,
+  · 兄弟合并
+     符合预期；
+     用inline-block消除
+ 
+ ```
+ 
+ ## 基本单位
+ ```
+ · 长度单位
+   px;
+   em;
+   百分数；
+   整数；
+   rem:；
+   vw和vh;
+ 
+  · 颜色
+     十六进制；
+     RGBA;
+     hsl;
+   
+ ```
+ 
 
 
  
