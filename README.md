@@ -264,4 +264,71 @@ CSS
 
 ![](https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/c9ee83218aff4a288644e8d102b59d09~tplv-k3u1fbpfcp-watermark.image)
 
+## CSS定位
+
+**布局是屏幕平面上的**
+**定位是垂直于屏幕的**
+
+一个div元素的分层自顶向依次是：内联子元素->浮动元素->块级子元素->border->background
+
+### 属性Position
+
+position
+
+    · static是默认值，待在文档流里；
+    · relative相对定位，升起来但是不脱离文档流；
+    · absolute绝对定位，定位的基准是祖先里的非static
+    · fixed固定定位，定位基准是viewport;
+    · sticky粘滞定位，不常用；
+经验
+
+    · 如果写了absolute，一般都需要补一个relative；
+    · 如果写了absolute或fixed，一定要补充top和left属性
+    
+
+#### 1.position:relative
+
+使用场景
+
+    · 用于做位移（很少用的）
+    · 用于给absolute元素做父级元素
+配合Z-index
+
+    · z-index:auto默认值。不创建新层叠上下文；
+    · z-index：0/1/2;
+    · z-index:-1/-2
+
+#### 2.position:absolute
+使用场景
+
+    · 脱离原来的位置，另起一层，比如对话框乱的关闭按钮；
+    · 鼠标提示
+ 配合Z-index
+ 
+ 经验：
+ 
+     ·某些浏览器如果不写top/left会位置错乱；
+     ·善用left:100%;
+     ·善用left:50%;
+     ·加负margin
+     
+#### 3.position:fixed
+
+使用场景
+
+    ·烦人的广告
+    ·回到顶部
+
+配合z-index
+
+经验
+
+    ·手机尽量不要使用
+
+### 层叠上下文
+
+<a href="https://developer.mozilla.org/zh-CN/docs/Web/Guide/CSS/Understanding_z_index/The_stacking_context">点击查阅：层叠上下文相关属性</a>
+
+z-index/flex/opacity/transform
+
  
