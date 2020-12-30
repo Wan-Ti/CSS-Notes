@@ -313,8 +313,12 @@ position
      ·加负margin
  
  white-space：nowrap;/* 文字部分不自动换行*/
-     
+ 
+**absolut是相对于第一个祖先定位不是static(一般不特殊说明都认为是static)的元素为参考系进行定位**
+
 #### 3.position:fixed
+
+**相对于视口定位**
 
 使用场景
 
