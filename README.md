@@ -87,7 +87,7 @@
     用inline-block消除
  
  ```
- <font color='red'> 样例：彩虹制作过程 </font>
+ <font color='red'>样例：彩虹制作过程</font>
  
  ## 基本单位
  ```
