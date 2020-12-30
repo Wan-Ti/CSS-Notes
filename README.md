@@ -132,6 +132,83 @@ dribbble.com顶级设计师社区(不提供下载)
 
 ## flex布局
 
+<a href="https://css-tricks.com/almanac/properties/f/flex/">flex布局教程</a>
+
+**flex布局有两个重要组成部分：container | items**
+
+### container元素所属样式
+1. 如何将一个元素变成flex容器
+```
+CSS 
+  .container{
+      display:flex; /* or inline-flex */
+  }
+```
+
+2. 改变items的流动方向
+
+```
+CSS
+    .container{
+    	flex-direction:row|row-reverse|column|column-reverse
+    }
+    
+```
+
+3. 改变折行方式
+
+```
+CSS
+   .container{
+   		flex-wrap:nowrap|wrap|wrap-reverse;
+   }
+
+```
+
+4. 轴对齐方式
+
+**重点属性**
+```
+display:flex;
+flex-direction:row/column;
+flex-wrap:wrap;
+just-content:center/space-between;
+align-items:center;
+```
+
+**默认主轴是横轴，除非改变flex-direction方向**；</br>
+**默认次轴是纵轴**
+
+
+
+```
+CSS 
+    .container{
+    	justify-content:flex-start|flex-end|center|space-between|space-around|space-evenly
+    }
+    
+    .container{
+    	align-item:stretch|flex-start;
+    }
+```
+5. 多行内容分布
+```
+CSS
+   .container{
+   		align-center:flex-start|flex-end|center|space-between|space-around|space-evenly
+    }
+```
+
+### items元素所属属性
+
+flex-shrink控制items区域横向缩小；</br>
+flex-basis控制items区域基准宽度；
+```
+flex:flex-grow flex-shrink flex-basis;
+```
+align-self定制align-items;
+
+
 ## Grid布局
 
  
