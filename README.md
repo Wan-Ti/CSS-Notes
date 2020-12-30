@@ -209,6 +209,59 @@ flex:flex-grow flex-shrink flex-basis;
 align-self定制align-items;
 
 
-## Grid布局
+## Grid
+
+**二维布局用Grid;一维布局用Flex**
+
+<a href="https://css-tricks.com/snippets/css/complete-guide-grid/">Grid布局教程</a>
+
+**Gird布局分为container和items两个部分**
+
+## container元素相关属性
+
+**成为container**
+```
+CSS 
+   .container{
+   	 display:grid|inline-grid;
+   }
+```
+
+## 对行和列进行设置
+
+```
+CSS
+  .container{
+    grid-template-column:10px 50px auto 50px 40px ;
+    grid-template-row:25% 100px auto;
+  }
+```
+
+![](https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/17fa8e4e77ca45efbef76df147f97e4a~tplv-k3u1fbpfcp-watermark.image)
+
+也可以对每一行或每一列命名从而单独设置该行或该列的尺寸
+```
+.item-a{
+  grid-column-start:2;
+  grid-column-end:five;
+  grid-row-start:row1-start;
+  grid-row-end:3;
+}
+
+```
+
+## 对相邻行或相邻列之间的空袭gap进行设置
+
+```
+CSS
+  .container{
+    grid-template-columns:100px 50px 1px;
+    grid-template-rows:80px auto 80px;
+    grid-column-gap:10px;
+    grid-row-gap:15px;
+  }
+```
+
+![](https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/c9ee83218aff4a288644e8d102b59d09~tplv-k3u1fbpfcp-watermark.image)
 
  
