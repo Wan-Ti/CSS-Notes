@@ -111,6 +111,8 @@ dribbble.com顶级设计师社区(不提供下载)
     
  ## float布局
  
+ **不适合在手机页面使用**
+ 
  步骤
  
     子元素上加float：left和width;
@@ -124,8 +126,6 @@ dribbble.com顶级设计师社区(不提供下载)
 <a href="">使用float完成的三栏布局 (如内容区)</a> ；</br>
 <a href="">使用float完成的四栏布局 (如导航)</a> ；</br>
 <a href="">使用float完成的平均布局 (如产品展示区)</a> ；</br>
-
-$\color{red}{只有傻子才在手机端使用float布局}$
 
 ## flex布局
 
