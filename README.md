@@ -311,6 +311,8 @@ position
      ·善用left:100%;
      ·善用left:50%;
      ·加负margin
+ 
+ white-space：nowrap;/* 文字部分不自动换行*/
      
 #### 3.position:fixed
 
