@@ -61,7 +61,9 @@
  ### 块、内联、内联块
 
  ### 两种盒模型
+ 
  两种盒模型分别为border-box和content-box；
+ 
  ```
  border-box:
  width:border+padding(内边距)ontent
@@ -72,6 +74,7 @@
  ```
  
  ### margin合并(内边距塌陷)
+ 
  ```
  合并的情形：
  父子margin合并；
@@ -87,7 +90,8 @@
     用inline-block消除
  
  ```
-<a style="color=red">彩虹</a>
+ 
+<font color="red">彩虹</font>
  
  ## 基本单位
  ```
