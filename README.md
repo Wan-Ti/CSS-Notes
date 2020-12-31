@@ -333,6 +333,8 @@ position
 
 ### 层叠上下文
 
+**需要注意的是层叠上下文会出现的场景**
+
 <a href="https://developer.mozilla.org/zh-CN/docs/Web/Guide/CSS/Understanding_z_index/The_stacking_context">点击查阅：层叠上下文相关属性</a>
 
 在层叠上下文中。定位元素也就是该元素的z-index的值为0，1，2；则该元素是浮动于内联子元素之上。如果该元素的z-index值为-1，-2，-3；则该元素下沉于background之下；
