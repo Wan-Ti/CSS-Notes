@@ -337,8 +337,10 @@ position
 
 在层叠上下文中。定位元素也就是该元素的z-index的值为0，1，2；则该元素是浮动于内联子元素之上。如果该元素的z-index值为-1，-2，-3；则该元素下沉于background之下；
 
-
-
 z-index/flex/opacity/transform
+
+注意区分：opacity:0与background:RGBA(255,255,255,0)的区别:</br>
+background-color:transparent和opacity:0所针对的不是同一个对象,前者只是针对元素的背景颜色，后者是针对元素本身，且对子元素是有覆盖性继承性的。所以元素设定了opacity后，它的子元素也会继承opacity属性，而且无法消除.举例说明：一个div内有大段文字，你设定div的bgc为红色且透明度为56%，代码：background-color: rgba(191, 19, 13, 0.56);刷新后的效果只是div的背景色会变，其内容颜色不受影响。但你设div的opacity:0.56；意思就是整个div（包括里面的内容）都变成透明度为56%，显示效果就是整个div包括里面的文字内容等都变成透明度为56%
+
 
  
