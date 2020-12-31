@@ -345,4 +345,207 @@ z-index/flex/opacity/transform
 background-color:transparent和opacity:0所针对的不是同一个对象,前者只是针对元素的背景颜色，后者是针对元素本身，且对子元素是有覆盖性继承性的。所以元素设定了opacity后，它的子元素也会继承opacity属性，而且无法消除.举例说明：一个div内有大段文字，你设定div的bgc为红色且透明度为56%，代码：background-color: rgba(191, 19, 13, 0.56);刷新后的效果只是div的背景色会变，其内容颜色不受影响。但你设div的opacity:0.56；意思就是整个div（包括里面的内容）都变成透明度为56%，显示效果就是整个div包括里面的文字内容等都变成透明度为56%
 
 
+
+## CSS动画
+
+ CSS 渲染过程依次包含了：布局、绘制、合成；
+ 
+ **使用transform完成动画**
+ 
+ 缺点：没有repaint（重新绘制）
+ 
+ 原理：
+ 
+    ·transform：translate(0=>300px);
+    ·直接修改会被合成，需要等一会修改；
+    ·transition过渡属性可自动补充中间帧；
+    
+ 
+ **浏览器渲染原理**
+ 
+ 阅读谷歌团队所编：<a href="https://developers.google.com/web/fundamentals/performance/critical-rendering-path/render-tree-construction">《渲染树构建、布局及绘制》</a>
+ 
+ 查看CSS各属性将会触发什么：<a href="https://css-tricks.com/css-triggers/">CSSc触发器</a>
+ 
+ 浏览器渲染过程：
+ 
+    · 根据HTML构建HTML树 (DOM)；
+    · 根据CSS构建CSS树 (CSS DOM)；
+    · 将这两棵树合并成一颗渲染树 (render tree);
+    · Layout布局 (文档流、盒模型、计算大小和位置)；
+    · Paint绘制 (把边框颜色、文字颜色、阴影等画出来)
+    · Compose合成 (根据层叠关系展示画面)
+ 
+ ![](https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/c7ba3b0fba0540e2a3b5f3132edd8872~tplv-k3u1fbpfcp-watermark.image)
+ 
+ **更新样式**
+ 
+ 一般我们通过JS来更新样式
+ 
+    · div.style.background='red';
+    · div.style.display='none';
+    · div.classList.add('red');
+    · div.remove()直接删除节点
+    
+  更新样式的三种方式：
+  
+  ![](https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/525d76552af048c99ab0c9a9b09f72fc~tplv-k3u1fbpfcp-watermark.image)
+  
+**第一种方式：全走**</br>
+div.remove()会触发当前消失，其他元素relayout;
+
+**第二种方式：跳过Layout**</br>
+改变背景颜色，直接repaint+composite;
+
+**第三种：跳过Layout和paint**</br>
+改变transform,只需composite;</br>
+必须全屏查看效果，在ifram里看会有问题
+
+点击查看：<a href="https://csstriggers.com/">CSS每个属性分别会触发什么流程</a>
+
+**CSS动画优化**
+ 
+1. 谁看完谁牛逼：<a href="https://developers.google.com/web/fundamentals/performance/rendering/stick-to-compositor-only-properties-and-manage-layer-count">动画优化</a>
+
+2. JS优化</br>
+	使用requestAnimationFrame代替setTimeout或setInterval;
+  
+3. CSS优化</br>
+   使用will-change或translate;
+   
+### Transform
+
+MDN查阅：<a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/transform">transform相关数值</a>
+
+---
+
+**transform-translate:位移**
+
+常用写法：
+
+    . translateX(<length-precentage>);
+    · translateY(<length-precentage>);
+    · translate(<length-precentage>,<length-perceentage>);
+    · translateZ(<length>)且父容器perspective;
+    · translate3d(x,y,z);
+其中translate(-50%,-50%)可做绝对定位元素的居中；
+
+**transform-scale:缩放**
+
+常用写法：
+
+    · scaleX(<number>);
+    · scaleY(<number>);
+    · scale(<number>,<number>);   
+
+**transform-rotate:旋转**
+
+常用写法：
+
+    · rotate([<angle>|<zero>]);
+    · rotateX([<angle>|<zero>]);
+    · rotateY([<angle>|<zero>]);
+    · rotateZ([<angle>|<zero>]);
+自己看链接吧：<a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/transform-function/rotate3d()">过于复杂的rotation3d()</a>
+
+**transform-skew:倾斜**
+
+常用写法：
+
+     · skewX([<angle>|<zero>])
+     · skewY([<angle>|<zero>])
+     · skew([<angle>|<zero>],[<angle>|<zero>])
+     
+**transform多重效果**
+
+组合使用
+
+    · transform:scale(0.5) translate(-100%,-100%);
+    · transform:none;取消所有
+    
+### transition
+
+MDN查阅：<a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/transform">transition相关数值</a>
+
+**transition过渡**
+
+作用：补充中间帧；
+
+语法：
+
+    · transition:属性名 时长 过渡方式 延迟
+    · transition:left 200ms linear;
+    · 可以用逗号分隔两个不同属性；
+    · transiton:left 200ms,top 400ms;
+    · 可以用all代表所有属性；
+    · transition:all 200ms;
+    · 过渡方式有:linear|ease|ease=in|ease-out|ease-in-out|cubic-bezier|step-start|start-end|steps
+    
+注意：
+
+    · 并不是所有属性都能过渡
+    · display:none=>block没法过渡
+    · 注意display和visiblity的区别
+    · background颜色过渡
+    · opacity透明度进行过渡
+    · 过渡需要要有起始
+    
+**中间点的过渡**
+
+使用两次transform
+
+    · .a===transform ===>.b
+    · .b===transform ===>.c
+    · 使用setTimeout或者监听transitionend事件
+ 
+ 使用 animation
+ 
+     · 声明关键帧
+     · 添加动画
+     
+<a href="https://stackoverflow.com/questions/12991164/maintaining-the-final-state-at-end-of-a-css3-animation">让动画停在最后一帧</a>
+
+ 
+**@keyframes完整语法**
+ 
+ <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@keyframes">keyframes标准写法</a>
+ 
+```
+from to 写法：
+
+@keyframes slidein {
+ from {
+ 	transform:translateX(0%);
+ }
+ to {
+ 	transform:translateX(100%);
+ }
+}
+```
+
+```
+@keyframs identifier {
+ 0% {top: 0; left: 0;}
+ 30% {top:50px;}
+ 68%,72%{left:50px;}
+ 100% {top:100px;left:100%;}
+}
+
+```
+
+### animation
+
+**缩写语法**
+
+animation：时长 | 过渡方式 | 延迟 | 次数 | 方向 | 填充模式 | 是否暂停 | 动画名；
+
+时长：1s或者1000ms;</br>
+过渡方式：与transition取值一样，如linear</br>
+次数：3或者2.4或者infinite</br>
+方向：reverse|alternate | alternate-reverse</br>
+填充模式：none | forwards | backwards | both</br>
+是否暂停：paused | running</br>
+以上所有属性都有对应的单独属性</br>
+
+
  
